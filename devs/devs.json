@@ -1,0 +1,12 @@
+{
+	"ip": "10.62.149.93",
+	"hostname": "Cat9500",
+	"port": 830,
+	"type": {
+		"name": "iosxe"
+	},
+	"auth": {
+		"passwd": "cisco!123",
+		"login": "cisco"
+	}
+}

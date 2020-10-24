@@ -1,0 +1,60 @@
+2020-10-21 00:42:42,996 # Start logging for peewee
+2020-10-21 00:42:42,998 # <peewee.SqliteDatabase object at 0x7ff33f4fae50>
+2020-10-21 00:42:42,999 # ('CREATE TABLE IF NOT EXISTS "vlans" ("vlan_id" INTEGER NOT NULL PRIMARY KEY, "name" VARCHAR(20), "description" VARCHAR(255))', [])
+2020-10-21 00:42:43,004 # ('CREATE TABLE IF NOT EXISTS "revision" ("id" INTEGER NOT NULL PRIMARY KEY, "source" VARCHAR(100) NOT NULL, "revision_num" INTEGER NOT NULL)', [])
+2020-10-21 00:42:43,005 # ('CREATE UNIQUE INDEX IF NOT EXISTS "revision_source" ON "revision" ("source")', [])
+2020-10-21 00:42:43,006 # ('SELECT "t1"."vlan_id", "t1"."name" FROM "vlans" AS "t1"', [])
+2020-10-21 00:42:45,501 # ('SELECT "t1"."source", "t1"."revision_num" FROM "revision" AS "t1"', [])
+2020-10-21 00:42:45,533 # ('BEGIN', None)
+2020-10-21 00:42:45,534 # ('INSERT OR REPLACE INTO "vlans" ("vlan_id", "name") VALUES (?, ?)', [25, 'testt'])
+2020-10-21 00:42:45,539 # DB records updated for vlans: 25
+2020-10-21 00:42:45,541 # ('DELETE FROM "vlans" WHERE ("vlans"."vlan_id" IN (?))', [24])
+2020-10-21 00:42:45,542 # DB records deleted for vlans: 24
+2020-10-21 00:42:45,545 # ('BEGIN', None)
+2020-10-21 00:42:45,545 # ('INSERT OR REPLACE INTO "revision" ("source", "revision_num") VALUES (?, ?)', ['Cat9500_10.62.149.93', 9])
+2020-10-21 00:42:45,549 # Revision for Cat9500_10.62.149.93 updated by: 9
+2020-10-21 00:50:13,628 # Start logging for peewee
+2020-10-21 00:50:13,630 # <peewee.SqliteDatabase object at 0x7f8f87e8de50>
+2020-10-21 00:50:13,631 # ('CREATE TABLE IF NOT EXISTS "vlans" ("vlan_id" INTEGER NOT NULL PRIMARY KEY, "name" VARCHAR(20), "description" VARCHAR(255))', [])
+2020-10-21 00:50:13,633 # ('CREATE TABLE IF NOT EXISTS "revision" ("id" INTEGER NOT NULL PRIMARY KEY, "source" VARCHAR(100) NOT NULL, "revision_num" INTEGER NOT NULL)', [])
+2020-10-21 00:50:13,634 # ('CREATE UNIQUE INDEX IF NOT EXISTS "revision_source" ON "revision" ("source")', [])
+2020-10-21 00:50:13,635 # ('SELECT "t1"."vlan_id", "t1"."name" FROM "vlans" AS "t1"', [])
+2020-10-21 00:50:15,468 # ('SELECT "t1"."source", "t1"."revision_num" FROM "revision" AS "t1"', [])
+2020-10-21 00:50:15,473 # ('BEGIN', None)
+2020-10-21 00:50:15,475 # ('INSERT OR REPLACE INTO "revision" ("source", "revision_num") VALUES (?, ?)', ['db', 11])
+2020-10-21 00:50:15,522 # ('INSERT OR REPLACE INTO "revision" ("source", "revision_num") VALUES (?, ?)', ['Cat9500_10.62.149.93', 11])
+2020-10-21 00:50:15,523 # Revision num for db and dev set equal
+2020-10-21 00:51:08,113 # Start logging for peewee
+2020-10-21 00:51:08,113 # Start logging for peewee
+2020-10-21 00:51:08,114 # <peewee.SqliteDatabase object at 0x7f8f868c8940>
+2020-10-21 00:51:08,114 # <peewee.SqliteDatabase object at 0x7f8f868c8940>
+2020-10-21 00:51:08,115 # ('CREATE TABLE IF NOT EXISTS "vlans" ("vlan_id" INTEGER NOT NULL PRIMARY KEY, "name" VARCHAR(20), "description" VARCHAR(255))', [])
+2020-10-21 00:51:08,115 # ('CREATE TABLE IF NOT EXISTS "vlans" ("vlan_id" INTEGER NOT NULL PRIMARY KEY, "name" VARCHAR(20), "description" VARCHAR(255))', [])
+2020-10-21 00:51:08,116 # ('CREATE TABLE IF NOT EXISTS "revision" ("id" INTEGER NOT NULL PRIMARY KEY, "source" VARCHAR(100) NOT NULL, "revision_num" INTEGER NOT NULL)', [])
+2020-10-21 00:51:08,116 # ('CREATE TABLE IF NOT EXISTS "revision" ("id" INTEGER NOT NULL PRIMARY KEY, "source" VARCHAR(100) NOT NULL, "revision_num" INTEGER NOT NULL)', [])
+2020-10-21 00:51:08,117 # ('CREATE UNIQUE INDEX IF NOT EXISTS "revision_source" ON "revision" ("source")', [])
+2020-10-21 00:51:08,117 # ('CREATE UNIQUE INDEX IF NOT EXISTS "revision_source" ON "revision" ("source")', [])
+2020-10-21 00:51:08,118 # ('SELECT "t1"."vlan_id", "t1"."name" FROM "vlans" AS "t1"', [])
+2020-10-21 00:51:08,118 # ('SELECT "t1"."vlan_id", "t1"."name" FROM "vlans" AS "t1"', [])
+2020-10-21 00:51:10,080 # ('SELECT "t1"."source", "t1"."revision_num" FROM "revision" AS "t1"', [])
+2020-10-21 00:51:10,080 # ('SELECT "t1"."source", "t1"."revision_num" FROM "revision" AS "t1"', [])
+2020-10-21 00:51:10,085 # ('BEGIN', None)
+2020-10-21 00:51:10,085 # ('BEGIN', None)
+2020-10-21 00:51:10,087 # ('INSERT OR REPLACE INTO "vlans" ("vlan_id", "name") VALUES (?, ?)', [25, 't123'])
+2020-10-21 00:51:10,087 # ('INSERT OR REPLACE INTO "vlans" ("vlan_id", "name") VALUES (?, ?)', [25, 't123'])
+2020-10-21 00:51:10,129 # DB records updated for vlans: 25
+2020-10-21 00:51:10,129 # DB records updated for vlans: 25
+2020-10-21 00:51:35,343 # Start logging for peewee
+2020-10-21 00:51:35,345 # <peewee.SqliteDatabase object at 0x7fac8c213e50>
+2020-10-21 00:51:35,346 # ('CREATE TABLE IF NOT EXISTS "vlans" ("vlan_id" INTEGER NOT NULL PRIMARY KEY, "name" VARCHAR(20), "description" VARCHAR(255))', [])
+2020-10-21 00:51:35,348 # ('CREATE TABLE IF NOT EXISTS "revision" ("id" INTEGER NOT NULL PRIMARY KEY, "source" VARCHAR(100) NOT NULL, "revision_num" INTEGER NOT NULL)', [])
+2020-10-21 00:51:35,349 # ('CREATE UNIQUE INDEX IF NOT EXISTS "revision_source" ON "revision" ("source")', [])
+2020-10-21 00:51:35,350 # ('SELECT "t1"."vlan_id", "t1"."name" FROM "vlans" AS "t1"', [])
+2020-10-21 00:51:37,215 # ('SELECT "t1"."source", "t1"."revision_num" FROM "revision" AS "t1"', [])
+2020-10-21 00:51:37,220 # ('BEGIN', None)
+2020-10-21 00:51:37,221 # ('INSERT OR REPLACE INTO "vlans" ("vlan_id", "name") VALUES (?, ?)', [25, 't123'])
+2020-10-21 00:51:37,228 # DB records updated for vlans: 25
+2020-10-21 00:51:37,233 # ('BEGIN', None)
+2020-10-21 00:51:37,237 # ('SELECT "t1"."source", "t1"."revision_num" FROM "revision" AS "t1"', [])
+2020-10-21 00:51:37,240 # ('INSERT OR REPLACE INTO "revision" ("source", "revision_num") VALUES (?, ?)', ['Cat9500_10.62.149.93', 12])
+2020-10-21 00:51:37,244 # Revision for Cat9500_10.62.149.93 updated by: 12
