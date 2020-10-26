@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from ncclient import manager
 from peewee import *
 import json
@@ -47,7 +48,7 @@ def cron_check_vlans():
     
     conn = SqliteDatabase(maindir+'/database/vlan_s.db')
     conn_proxy.initialize(conn)
-    #DB connection
+    #DB connection starts
     try:
         conn.connect()
         sync_logger.debug(conn)
@@ -57,6 +58,7 @@ def cron_check_vlans():
     except Exception:
         sync_logger.exception('can not connect to database')
         return
+    #Dev vlan collection
     try:
         vlans_dev_dict = netconf_dev.netconf_collect(devs_json)
     except Exception:
@@ -81,18 +83,20 @@ def cron_check_vlans():
     """
     if vlans_db_dict == vlans_dev_dict and vlans_db_dict:
         if rev_dict['db'] == rev_dict[dev_uuid]:
+            sync_logger.debug(f'DB and dev vlan lists are equal. Check Finished')
             return
         else:
             eq_rev = max(rev_dict['db'], rev_dict[dev_uuid])
             with conn.atomic():
                 peewee_db.peewee_edit_rev(Revision, 'db', eq_rev)
                 peewee_db.peewee_edit_rev(Revision, dev_uuid, eq_rev)
-                sync_logger.debug(f'Revision num for db and dev set equal')
+                sync_logger.debug(f'Revision num for db and dev set equal. Check Finished')
             return
 
     elif vlans_db_dict != vlans_dev_dict:
         #transaction
         if rev_dict['db'] == rev_dict[dev_uuid]:
+            sync_logger.debug(f'Revision of {dev_uuid} is bigger. Trying to update DB')
             mod_dict, del_dict = vlan_diff(vlans_db_dict, vlans_dev_dict)
             with conn.atomic() as trans:
                 peewee_db.peewee_edit(Vlans,mod_dict)
@@ -107,6 +111,7 @@ def cron_check_vlans():
             return
         else:
             if rev_dict['db'] > rev_dict[dev_uuid]:
+                sync_logger.debug(f'Revision of DB is bigger. Trying to push a BD state')
                 mod_dict, del_dict = vlan_diff(vlans_dev_dict, vlans_db_dict)
                 #transaction
                 try:
@@ -132,6 +137,7 @@ def cron_check_vlans():
                     sync_logger.exception('Push to device is failed')
                 return
             elif rev_dict['db'] < rev_dict[dev_uuid]:
+                sync_logger.debug(f'Revision of {dev_uuid} is bigger, need to fix')
                 mod_dict, del_dict = vlan_diff(vlans_db_dict, vlans_dev_dict)
                 #transaction
                 with conn.atomic():
@@ -139,6 +145,7 @@ def cron_check_vlans():
                         peewee_db.peewee_edit(Vlans,mod_dict)
                     if del_dict:
                         peewee_db.peewee_del(Vlans,del_dict)
+                    rev_dict = peewee_db.peewee_revision_collect(Revision)
                     peewee_db.peewee_edit_rev(Revision, 'db', rev_dict[dev_uuid])
                     sync_logger.debug(f'Revision for DB updated by: {rev_dict[dev_uuid]}')
                 #check state and unblock
@@ -152,6 +159,8 @@ def create_logger(app,log_file):
     ch = logging.FileHandler(log_file)
     ch.setLevel(logging.DEBUG)
     ch.setFormatter(formatter)
+    if (logger.hasHandlers()):
+        logger.handlers.clear()
     logger.addHandler(ch)
     logger.debug(f'Start logging for {app}')
     return(logger)

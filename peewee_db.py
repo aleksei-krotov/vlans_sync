@@ -1,5 +1,4 @@
 from peewee import *
-import logging
 
 """Get vlans from db"""
 def peewee_collect(Vlans_table):
@@ -16,16 +15,17 @@ def peewee_revision_collect(Revision_table):
 
 """
 Add or replace vlans based dict
+
+TODO: reserved vlans
 <SQLite was originally designed with a policy of avoiding arbitrary limits...> . 
-So we should check vlan numbers by py3 rather than db during insert/update.
+So for reserved vlans we should check vlan numbers by py3 rather than db during insert/update.
 """
 def peewee_edit(Vlans_table,mod_dict):
     vlans_mod = [(k, mod_dict[k]) for k in mod_dict]
     for k in mod_dict:
         query = Vlans_table.replace(vlan_id = k, name = mod_dict[k])
         query.execute()
-    #check trigger with updates
-    #len(mod_dict.keys())
+
 
 """Del Vlans from db"""
 def peewee_del(Vlans_table,del_dict):

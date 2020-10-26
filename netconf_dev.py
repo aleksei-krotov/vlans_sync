@@ -17,7 +17,7 @@ def netconf_collect(dev):
             </native>
             '''
         result = m.get_config('running', filter=('subtree', vlan_filter))
-        if result:
+        if xmltodict.parse(result.xml)['rpc-reply'].get('data'):
             vlan_prep = xmltodict.parse(result.xml)['rpc-reply']['data']['native']['vlan']['vlan-list']
             vlans_dict = {int(vlan.get('id')): vlan.get('name') for vlan in vlan_prep}
             return(vlans_dict)
